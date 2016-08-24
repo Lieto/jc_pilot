@@ -6,7 +6,7 @@
 #include "FaceDetector.h"
 
 FaceDetector::FaceDetector(string datadir, string license, int dev) {
-
+/*
     if (dev == 0) {
         crowdSight = new  CrowdSight(datadir, REDISTRIBUTION);
     } else {
@@ -17,10 +17,11 @@ FaceDetector::FaceDetector(string datadir, string license, int dev) {
         delete crowdSight;
         crowdSight = NULL;
     }
+*/
 }
 
 FaceDetector::FaceDetector(Parameters &parameters) {
-
+/*
     if (parameters.dev == 0) {
         crowdSight = new  CrowdSight(parameters.datadir, REDISTRIBUTION);
     } else {
@@ -37,6 +38,7 @@ FaceDetector::FaceDetector(Parameters &parameters) {
     if (parameters.dev == 1) {
         std::cout << "Detector type: " << crowdSight->getFaceDetector() << std::endl;
     }
+*/
 }
 
 void FaceDetector::ShowSettings() {

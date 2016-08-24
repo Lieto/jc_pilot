@@ -5,10 +5,11 @@
 #include "Detector.h"
 #include <sys/time.h>
 #include "include/rapidjson/document.h"
-#include "restclient-cpp/restclient.h"
+#include <restclient-cpp/restclient.h>
 
 void Detector::sendJsonData(std::map<long, DetectedPerson> detectedPeopleMap, int countedPedestrians, int frameNo, Parameters *parameters) {
 
+    std::cout << "Are we here..." << std::endl;
     RestClient::headermap headers;
 
     std::map<long, DetectedPerson>::iterator pIt;
@@ -155,7 +156,7 @@ void Detector::run() {
         people_count_detector->line_det1->AddLine(preprocessed_frame);
         people_count_detector->line_det2->AddLine(preprocessed_frame);
 
-        face_detector->Process(preprocessed_frame, *parameters, frameNo, fileSource);
+        //face_detector->Process(preprocessed_frame, *parameters, frameNo, fileSource);
 
         if (parameters->display == 1) {
             imshow("CV Video", preprocessed_frame);
