@@ -99,7 +99,7 @@ try:
                 need_reconnect = False
                 try:
                     scp.put(args.capturedir + k1, args.transferdir + k1)
-                    scp.put(INPUT_CSV_PATH, args.transferdir + args.transfercsv)
+                    scp.put(SENT_CSV_PATH, args.transferdir + args.transfercsv)
                 except (SCPException, paramiko.ssh_exception.SSHException, EOFError, socket.error), e:
                     logging.error(e)
                     print e
