@@ -84,7 +84,7 @@ try:
     while True:
         print 'Starting ffmpeg...'
 
-        # If time is between 2:00 and 6:00 stop process if on
+        # If time is between sleep_start_time and sleep_send_time stop process if on
         now = datetime.datetime.now()
 
         if (now.hour >= args.sleep_start_time_hour and now.hour <= args.sleep_end_time_hour):
