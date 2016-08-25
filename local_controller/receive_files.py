@@ -90,7 +90,7 @@ try:
 
                 t1 = datetime.datetime.now()
                 logging.info('Starting detector...')
-                p = Popen([args.detector, '--license', args.license, '--url', args.url, '-I', args.id, '-M', '1',
+                p = Popen([args.detector, '--license', args.license, '--url', args.url, '-I', args.id, '--dev', '1',
                            '--filename', args.transferdir + k1, '--startsecond', str(stamp.timestamp)])
                 p.wait()
                 t2 = datetime.datetime.now()

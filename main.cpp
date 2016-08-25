@@ -70,7 +70,7 @@ int main(int argc, const char *argv[]) {
             ("desired_frame_rate", po::value<double>(&parameters->desired_frame_rate)->default_value(25.0), "Desired frame rate")
             ("url", po::value<string>(&parameters->url)->default_value("DEBUG"), "URL to send json")
             ("license", po::value<string>(&parameters->license), "Crowdsight license key")
-            ("dev", po::value<int>(&parameters->dev)->default_value(1), "Development mode on")
+            ("dev", po::value<int>(&parameters->dev)->default_value(0), "Development mode on")
             ("datadir", po::value<string>(&parameters->datadir)->default_value("/usr/local/crowdsight/data"), "CrowdSight data directory")
             ("startsecond", po::value<int>(&parameters->startSecond)->default_value(0), "Clip's start second")
             ("adX", po::value<int>(&parameters->ad_point_x)->default_value(0), "Gaze middlepoint x val")
