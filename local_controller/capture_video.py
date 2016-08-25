@@ -30,6 +30,9 @@ parser.add_argument('--stream', type=str,
                     help='the RTSP stream URL',
                     default='rtsp://admin:ms1234@192.168.1.150/main')
 
+parser.add_argument('--camera_id', type=str,
+                    help='laptop camera id',
+                    default='')
 parser.add_argument('--camera', type=str, help='the camera name', default='cam1')
 
 parser.add_argument('--capturedir', type=str, required=True,
@@ -45,18 +48,34 @@ parser.add_argument('--sleep_end_time_hour', type=int, required=True, help="The 
 parser.add_argument('--sleep_end_time_min', type=int, required=True, help="The beginning of non-capturing time in hours", default=0)
 
 args = parser.parse_args()
-ARGS = [
-    args.ffmpeg,
-    '-v', '8',
-    '-i', args.stream,
-    '-map', '0:0',
-    '-c:v', 'copy',
-    '-f', 'segment',
-    '-segment_format', 'mp4',
-    '-segment_time', '60',
-    '-segment_list', args.capturedir + args.camera + '.csv',
-    '-strftime', '1',
-    args.capturedir + args.camera + '-%04Y%02m%02d%02H%02M%02S.mp4'
+
+if args.camera_id != '':
+    ARGS = [
+        args.ffmpeg,
+        '-v', '8',
+        '-i', '/dev/video0',
+        '-map', '0:0',
+        '-c:v', 'copy',
+        '-f', 'segment',
+        '-segment_format', 'mp4',
+        '-segment_time', '60',
+        '-segment_list', args.capturedir + args.camera + '.csv',
+        '-strftime', '1',
+                         args.capturedir + args.camera + '-%04Y%02m%02d%02H%02M%02S.mp4'
+    ]
+else:
+    ARGS = [
+        args.ffmpeg,
+        '-v', '8',
+        '-i', args.stream,
+        '-map', '0:0',
+        '-c:v', 'copy',
+        '-f', 'segment',
+        '-segment_format', 'mp4',
+        '-segment_time', '60',
+        '-segment_list', args.capturedir + args.camera + '.csv',
+        '-strftime', '1',
+        args.capturedir + args.camera + '-%04Y%02m%02d%02H%02M%02S.mp4'
 ]
 
 p = None
